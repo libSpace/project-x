@@ -1,11 +1,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { Pool } = require('pg');
+const cors = require("cors");
+
+
+
 
 const app = express();
 const port = 3000;
 
 app.use(bodyParser.json());
+// Middlewre
+app.use(cors());// Using CORS middleware to enable cross-origin requests, allowing the server to be accessed from different origins.
+app.use(express.json());// Using middleware to enable the server to parse incoming JSON data from requests.
+
+
 
 
 const pool = new Pool({
