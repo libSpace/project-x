@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useState } from 'react'
+import LogIn from './LogIn';
 
 function SignUp() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isSignUpSuccessful, setIsSignUpSuccessful] = useState(false);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +22,10 @@ function SignUp() {
       if (response.ok) {
         // Handle successful login
         console.log('SignUp successful');
-        
+        setIsSignUpSuccessful(true);
+     
+
+
       } else {
         // Handle login error
         console.error('SignUp failed');
@@ -28,7 +34,10 @@ function SignUp() {
       console.error('Error:', error.message);
     }
   };
-
+// Render the Login component if signup is successful
+if (isSignUpSuccessful) {
+  return <LogIn />;
+}
   return (
     <div>
       
